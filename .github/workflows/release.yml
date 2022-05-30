@@ -1,0 +1,11 @@
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    uses: cndoit18/demo-chart-repo/.github/workflows/release.yml@master
+    with:
+      component: "frobnitz"
+      version: ${{ github.ref }}
