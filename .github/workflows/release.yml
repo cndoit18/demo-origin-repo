@@ -5,7 +5,8 @@ on:
 
 jobs:
   release:
-    uses: cndoit18/demo-chart-repo/.github/workflows/release.yml@master
-    with:
-      component: "frobnitz"
-      version: ${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow --repo cndoit18/demo-chart-repo run .github/workflows/release.yml -f component=frobnitz
+        env:
+          GITHUB_TOKEN: ${{ secrets.REMOTE_TOKEN }}
